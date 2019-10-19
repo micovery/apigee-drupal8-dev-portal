@@ -123,4 +123,4 @@ ENV PATH="${DRUPAL_PROJECT_DIR}/vendor/bin:${PATH}"
 WORKDIR /drupal
 
 EXPOSE 80
-CMD exec sudo -u root supervisord -n
+CMD exec sudo -u root supervisord -n -c /etc/supervisor/supervisord.conf
