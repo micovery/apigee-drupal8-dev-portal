@@ -8,7 +8,8 @@ This repo contains a Dockerfile for building the an container image with the fol
 
 The docker image is meant to be used for development or demonstration purposes.
 
- 
+![](images/kickstart.png?raw=true "Apigee Developer Portal Kickstart")
+
 
 ### Usage
 
