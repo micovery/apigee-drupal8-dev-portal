@@ -1,6 +1,6 @@
 ## Apigee Drupal8 Developer Portal Kickstart
 
-This repo contains a Dockerfile for building the an container image with the following components:
+This repo contains a Dockerfile for building a container image with the following components:
 
 * [Apache 2](https://httpd.apache.org/)
 * [MariaDB 10](https://mariadb.com/)
