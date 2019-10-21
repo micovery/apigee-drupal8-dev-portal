@@ -109,7 +109,7 @@ RUN mkdir -p ${DRUPAL_WEB_DIR}/sites/default/files && \
 	cp ${DRUPAL_WEB_DIR}/sites/default/default.services.yml ${DRUPAL_WEB_DIR}/sites/default/services.yml && \
 	chmod a+w ${DRUPAL_WEB_DIR}/sites/default/settings.php && \
 	chmod 0664 ${DRUPAL_WEB_DIR}/sites/default/services.yml && \
-	echo '$settings["trusted_host_patterns"] = array("^localhost$");' >> ${DRUPAL_WEB_DIR}/sites/default/settings.php
+	echo '$settings["trusted_host_patterns"] = array("^.*$");' >> ${DRUPAL_WEB_DIR}/sites/default/settings.php
 
 # Install Drupal site
 USER root
