@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM debian:stretch
+FROM debian:stretch-slim
 
 ARG KICKSTART_VERSION
 ENV DEBIAN_FRONTEND noninteractive
@@ -97,7 +97,7 @@ RUN a2dissite 000-default.conf && \
     cat /etc/apache2/sites-available/drupal.conf && \
     a2ensite drupal.conf
 
-#Configure Drupal
+# Configure Drupal
 USER drupal
 RUN mkdir -p ${DRUPAL_WEB_DIR}/sites/default/files && \
 	chmod a+w ${DRUPAL_WEB_DIR}/sites/default -R && \
@@ -112,7 +112,6 @@ RUN mkdir -p ${DRUPAL_WEB_DIR}/sites/default/files && \
 	echo '$settings["trusted_host_patterns"] = array("^localhost$");' >> ${DRUPAL_WEB_DIR}/sites/default/settings.php
 
 # Install Drupal site
-
 USER root
 RUN service mysql start && \
     cd ${DRUPAL_WEB_DIR} && \
@@ -134,7 +133,7 @@ autorestart=false  \n\
 ' >> /etc/supervisor/supervisord.conf
 
 
-#Make drupal active user
+# Make drupal active user
 USER drupal
 ENV PATH="${DRUPAL_PROJECT_DIR}/vendor/bin:${PATH}"
 WORKDIR /drupal
