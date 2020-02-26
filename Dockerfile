@@ -39,9 +39,9 @@ RUN apt-get update && \
     echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list && \
     apt-get update && \
     apt-get -y install -y --no-install-recommends \
-              php7.3 php7.3-cli php7.3-bcmath php7.3-bz2 php7.3-intl php7.3-gd \
-              php7.3-mbstring php7.3-mysql php7.3-zip php7.3-sqlite3 \
-              php7.3-curl php7.3-xml \
+              php php-cli php-bcmath php-bz2 php-intl php-gd \
+              php-mbstring php-mysql php-zip php-sqlite3 \
+              php-curl php-xml php-intl \
               apache2 libapache2-mod-php \
               git unzip cron gnupg supervisor \
               mysql-server mysql-client && \
@@ -57,8 +57,6 @@ RUN apt-get update && \
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
     \
     sudo -u drupal composer -V && \
-    \
-    sudo -u drupal composer global require hirak/prestissimo && \
     \
     mkdir -p ${DRUPAL_PROJECT_DIR} && \
     chmod -R a+rw ${DRUPAL_PROJECT_DIR}  && \
@@ -113,6 +111,8 @@ RUN apt-get update && \
           --account-pass=admin && \
     \
     sudo -u www-data ${DRUPAL_PROJECT_DIR}/vendor/bin/drush en devel && \
+    sudo -u drupal chmod o-w ${DRUPAL_WEB_DIR}/sites/default/settings.php && \
+    sudo -u drupal chmod o-w ${DRUPAL_WEB_DIR}/sites/default && \
     \
     echo '\
 [program:apache2]  \n\
