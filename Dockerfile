@@ -44,7 +44,7 @@ RUN apt-get update && \
               php-curl php-xml php-intl \
               apache2 libapache2-mod-php \
               git unzip cron gnupg supervisor \
-              mysql-server mysql-client && \
+              mysql-server mysql-client patch && \
     apt-get -y clean && \
     apt-get -y autoclean && \
     rm -rf /var/lib/apt/lists/* && \
